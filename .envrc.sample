@@ -1,0 +1,3 @@
+export TELEGRAM_TOKEN=
+export SERVER_URL=
+export SERVER_PORT=

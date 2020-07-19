@@ -1,0 +1,32 @@
+{
+  "name": "twitch-live-telegram-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "start:debug": "tsnd src/index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rjmunhoz/twitch-live-telegram-bot.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rjmunhoz/twitch-live-telegram-bot/issues"
+  },
+  "homepage": "https://github.com/rjmunhoz/twitch-live-telegram-bot#readme",
+  "devDependencies": {
+    "@types/express": "^4.17.7",
+    "ts-node-dev": "^1.0.0-pre.52",
+    "typescript": "^3.9.7"
+  },
+  "dependencies": {
+    "axios": "^0.19.2",
+    "express": "^4.17.1",
+    "telegraf": "^3.38.0"
+  }
+}
