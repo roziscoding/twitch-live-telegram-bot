@@ -1,6 +1,6 @@
-import { TelegrafContext } from 'telegraf/typings/context'
+import type { ExtendedContext } from './ExtendedContext'
 
 export type Command = {
-  run: (ctx: TelegrafContext) => Promise<unknown>,
+  run: (ctx: ExtendedContext) => Promise<unknown>,
   name: string
 }

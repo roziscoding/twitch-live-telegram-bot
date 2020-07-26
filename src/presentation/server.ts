@@ -1,13 +1,24 @@
-import { factory as botFactory } from './bot'
-import { AppConfig } from '../config'
+import ngrok from "ngrok";
+import { AppConfig } from "../config";
+import { factory as botFactory } from "./bot";
 
-export async function start (config: AppConfig) {
-  const HOOK_PATH = `${config.server.url}/${config.telegram.token}`
-  const bot = await botFactory(config)
+async function getHookUrl(config: AppConfig) {
+  if (config.server.url) return `${config.server.url}/${config.telegram.token}`;
 
-  await bot.telegram.setWebhook(HOOK_PATH)
-
-  await bot.startWebhook(`/${config.telegram.token}`, null, config.server.port)
+  return ngrok
+    .connect({
+      addr: config.server.port,
+    })
+    .then((ngrokUrl) => `${ngrokUrl}/${config.telegram.token}`);
 }
 
-export default { start }
+export async function start(config: AppConfig) {
+  const HOOK_PATH = await getHookUrl(config);
+  const bot = await botFactory(config);
+
+  await bot.telegram.setWebhook(HOOK_PATH);
+
+  await bot.startWebhook(`/${config.telegram.token}`, null, config.server.port);
+}
+
+export default { start };

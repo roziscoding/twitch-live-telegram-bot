@@ -1,16 +1,24 @@
-import Telegraf from 'telegraf'
+import { AppConfig } from "../config"
+import middlewares from "./middlewares"
+import commands, { commandNames } from "./commands"
 
-import commands, { commandNames } from './commands'
-import { AppConfig } from '../config'
+import Telegraf, { session } from "telegraf"
 
-export async function factory (config: AppConfig) {
-  const bot = new Telegraf(config.telegram.token)
+export async function factory(config: AppConfig) {
+  const bot = new Telegraf(config.telegram.token, {
+    telegram: { webhookReply: false },
+  })
+
+  bot.use(session())
+
+  bot.use(middlewares.state)
+  bot.use(middlewares.logger)
 
   for (const command of commands) {
-    bot.command(command.name, command.run)
+    bot.command(command.name, (ctx) => command.run(ctx as any))
   }
 
-  console.log(`Loaded commands: ${commandNames.join(', ')}`)
+  console.log(`Loaded commands: ${commandNames.join(", ")}`)
 
   return bot
 }
