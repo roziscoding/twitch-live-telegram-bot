@@ -1,4 +1,6 @@
 import ngrok from 'ngrok'
+import express from 'express'
+
 import { AppConfig } from '../config'
 import { factory as botFactory } from './bot'
 
@@ -16,7 +18,13 @@ export async function start (config: AppConfig) {
 
   await bot.telegram.setWebhook(HOOK_PATH)
 
-  await bot.startWebhook(`/${config.telegram.token}`, null, config.server.port)
+  const app = express()
+
+  app.get('/', (_, res) => res.redirect('https://t.me/rozbifebot'))
+
+  app.use(bot.webhookCallback(`/${config.telegram.token}`))
+
+  app.listen(config.server.port, () => { console.log(`Listening on port ${config.server.port}`) })
 }
 
 export default { start }

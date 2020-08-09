@@ -17,6 +17,6 @@ export function factory () {
 }
 
 export default {
-  name: 'set-name',
+  name: '',
   factory
 }
