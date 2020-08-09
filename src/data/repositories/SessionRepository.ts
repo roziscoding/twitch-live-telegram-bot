@@ -1,6 +1,6 @@
 import { MongodbRepository } from '@nindoo/mongodb-data-layer'
-import { Session } from '../../domain/Session';
-import { Db } from 'mongodb';
+import { Session } from '../../domain/Session'
+import { Db } from 'mongodb'
 
 export class SessionRepository extends MongodbRepository<Session> {
   constructor (db: Db) {
@@ -8,7 +8,6 @@ export class SessionRepository extends MongodbRepository<Session> {
   }
 
   async saveSession (session: Session) {
-    console.log(JSON.stringify(session))
     const exists = await this.existsById(session._id)
     if (!exists) return this.create(session)
 

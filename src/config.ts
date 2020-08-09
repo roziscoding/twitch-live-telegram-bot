@@ -1,4 +1,4 @@
-import { IMongoParams } from "@nindoo/mongodb-data-layer"
+import { IMongoParams } from '@nindoo/mongodb-data-layer'
 
 export type AppConfig = {
   telegram: {

@@ -1,6 +1,6 @@
 const WizardScene = require('telegraf/scenes/wizard')
 
-export function factory() {
+export function factory () {
   return new WizardScene(
     'set-age',
     async (ctx: any) => {
@@ -18,5 +18,5 @@ export function factory() {
 
 export default {
   name: '',
-  factory,
+  factory
 }

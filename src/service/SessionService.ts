@@ -1,6 +1,6 @@
-import { SessionRepository } from "../data/repositories/SessionRepository";
-import { ObjectId } from "mongodb";
-import { Session } from "../domain/Session";
+import { SessionRepository } from '../data/repositories/SessionRepository'
+import { ObjectId } from 'mongodb'
+import { Session } from '../domain/Session'
 
 export type NewOrExistingSession = Omit<Session, '_id'> & { _id?: ObjectId }
 

@@ -1,11 +1,11 @@
 const WizardScene = require('telegraf/scenes/wizard')
 
-export function factory() {
+export function factory () {
   return new WizardScene(
     'set-name',
     async (ctx: any) => {
       await ctx.reply('Hello. Send me your new name')
-      return ctx.wizard.next()
+      ctx.wizard.next()
     },
     async (ctx: any) => {
       ctx.session.name = ctx.message.text
@@ -17,6 +17,6 @@ export function factory() {
 }
 
 export default {
-  name: '',
-  factory,
+  name: 'set-name',
+  factory
 }

@@ -3,7 +3,7 @@ import cat from './cat'
 import raw from './raw'
 import echo from './echo'
 
-const commands =  [
+const commands = [
   id,
   cat,
   raw,

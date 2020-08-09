@@ -2,7 +2,7 @@ import scenes from './scenes'
 import Telegraf, { Stage } from 'telegraf'
 import { TelegrafContext } from 'telegraf/typings/context'
 
-export function install(bot: Telegraf<TelegrafContext>) {
+export function install (bot: Telegraf<TelegrafContext>) {
   const stage = new Stage([])
 
   scenes.forEach(scene => {

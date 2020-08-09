@@ -1,15 +1,15 @@
-const WizardScene = require("telegraf/scenes/wizard")
+const WizardScene = require('telegraf/scenes/wizard')
 
-export function factory() {
+export function factory () {
   return new WizardScene(
-    "hello",
+    'hello',
     async (ctx: any) => {
       if (ctx.session.name && ctx.session.age) {
         await ctx.reply(`Hi there, ${ctx.session.name}! You have ${ctx.session.age} years old!`)
         return ctx.scene.leave()
       }
 
-      await ctx.reply("Hello. Please, tell me your name")
+      await ctx.reply('Hello. Please, tell me your name')
       return ctx.wizard.next()
     },
     async (ctx: any) => {
@@ -26,6 +26,6 @@ export function factory() {
 }
 
 export default {
-  name: "hello",
-  factory,
+  name: 'hello',
+  factory
 }
