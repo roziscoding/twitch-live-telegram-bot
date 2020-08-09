@@ -6,7 +6,7 @@ const command: Command = {
     if (!ctx.message?.text) return
 
     const { message: { text } } = ctx
-  
+
     await ctx.reply(text.replace('/echo ', ''))
   }
 }

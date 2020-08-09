@@ -13,11 +13,13 @@ export function install (bot: Telegraf<TelegrafContext>) {
 
   bot.use(stage.middleware() as any)
 
-  scenes.forEach(scene => {
-    bot.command(scene.name, (ctx: any) => ctx.scene.enter(scene.name))
-  })
+  scenes
+    .filter(({ name }) => Boolean(name))
+    .forEach(scene => {
+      bot.command(scene.name, (ctx: any) => ctx.scene.enter(scene.name))
+    })
 }
 
-const sceneNames = scenes.map(({ name }) => name)
+const sceneNames = scenes.map(({ name }) => name).filter(Boolean)
 
 export default { install, sceneNames }
